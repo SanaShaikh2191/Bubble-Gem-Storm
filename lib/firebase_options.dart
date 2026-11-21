@@ -17,19 +17,13 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -53,10 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCQAGXyxDHVkWD3CzTpQbsJ_v3UFD_6Weg',
-    appId: '1:263262723804:android:8e4410cf6a97d4ab78de19',
-    messagingSenderId: '263262723804',
-    projectId: 'one-second-hero-4f9c4',
-    storageBucket: 'one-second-hero-4f9c4.firebasestorage.app',
+    apiKey: 'AIzaSyC_fnPfy7C0o5kVQ-Jj_celAMmNZ-Tn5pE',
+    appId: '1:561618574941:android:41a6963f08f35f1ea8f7b4',
+    messagingSenderId: '561618574941',
+    projectId: 'bubblegemstorm',
+    storageBucket: 'bubblegemstorm.firebasestorage.app',
+  );
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAHh9YvEi6YfbJgPfMrtgnFevC9xbxyVPI',
+    appId: '1:561618574941:web:8da69123154fa074a8f7b4',
+    messagingSenderId: '561618574941',
+    projectId: 'bubblegemstorm',
+    authDomain: 'bubblegemstorm.firebaseapp.com',
+    storageBucket: 'bubblegemstorm.firebasestorage.app',
+    measurementId: 'G-E8GKN6F411',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAMSLEjkCfZ3ts0gsVmNhrFTc9QEKfIJpI',
+    appId: '1:561618574941:ios:94ee73fc5a8c185aa8f7b4',
+    messagingSenderId: '561618574941',
+    projectId: 'bubblegemstorm',
+    storageBucket: 'bubblegemstorm.firebasestorage.app',
+    iosBundleId: 'com.cwm.bubblegem.bubbleGemStorm',
   );
 }

@@ -9,6 +9,8 @@ const Color purplecolor = Color(0xffFCA3FE);
 const Color zonecolor1 = Color(0xffFF3D9A);
 const Color logout = Color(0xffFF6B9D);
 const Color gameOver1 = Color(0xffff6467);
+const Color popcolor = Color(0xffff2d95);
+const Color bubcolor = Color(0xff00e5ff);
 
 const Color frozeng = Color(0xffFF1B60);
 const Color bombg = Color(0xff2F7D7D);

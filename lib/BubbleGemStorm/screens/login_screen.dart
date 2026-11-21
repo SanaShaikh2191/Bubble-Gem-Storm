@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const Spacer(),
-              Image.asset('assets/images/gemLogo.png', height: 200),
+              Image.asset('assets/minigame3/bubble_gem_storm/icons/logo.png', height: 200,),
               gradientText(
                 [Color(0xffF7D4FA), Color(0xffDE01C1)],
                 "Bubble  Gem ",
@@ -115,7 +115,7 @@ class _GoogleSignInButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/google.png', height: 24),
+            Image.asset('assets/minigame3/bubble_gem_storm/icons/google.png', height: 24),
             const SizedBox(width: 12),
             const Text(
               'Sign in with Google',

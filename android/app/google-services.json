@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "561618574941",
+    "project_id": "bubblegemstorm",
+    "storage_bucket": "bubblegemstorm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561618574941:android:41a6963f08f35f1ea8f7b4",
+        "android_client_info": {
+          "package_name": "com.cwm.bubblegem.bubble_gem_storm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561618574941-0u7jm321n9a0i56dt7i5fc0m7atil5ff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cwm.bubblegem.bubble_gem_storm",
+            "certificate_hash": "aed43ff83e7380611a472d196ec34d275e2fa6c7"
+          }
+        },
+        {
+          "client_id": "561618574941-bmbm3qb9ueg2vh6pg36cg00dlobjsf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_fnPfy7C0o5kVQ-Jj_celAMmNZ-Tn5pE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561618574941-bmbm3qb9ueg2vh6pg36cg00dlobjsf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "561618574941-iv373gk7gj6d0ic78gmgovaaq2bkvrp4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cwm.bubblegem.bubbleGemStorm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

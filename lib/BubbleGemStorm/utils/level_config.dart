@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/game_screen.dart';
+import 'bubble_gem_firestore_service.dart';
 
 enum GameTier { tier1, tier2, tier3 }
 
@@ -39,9 +40,11 @@ List<LevelConfig> generateAllLevels() {
         localLevel: i,
         tier: GameTier.tier1,
         objective: ObjectiveType.score,
-        targetValue: 30 + (i * 15), // Scales from 45 to 330
-        speed: 1.5 + (i * 0.08), // Gradual speed increase
-        spawnRate: 1000 - (i * 15), // Gradual spawn frequency increase
+        targetValue: 1, //20 + (i * 10), // Scales from 30 to 220
+        speed: 1.2 + (i * 0.05), //1.5 + (i * 0.08), // Gradual speed increase
+        spawnRate:
+            1500 -
+            (i * 20), //1000 - (i * 15), // Gradual spawn frequency increase
       ),
     );
   }
@@ -54,9 +57,9 @@ List<LevelConfig> generateAllLevels() {
         localLevel: i,
         tier: GameTier.tier2,
         objective: ObjectiveType.survive,
-        targetValue: 30 + (i * 3), // Scales from 33s to 120s
-        speed: 2.5 + (i * 0.07), // Faster base speed
-        spawnRate: 800 - (i * 10), // More gems on screen
+        targetValue: 20 + (i * 2), //30 + (i * 3), // Scales from 22s to 80s
+        speed: 1.8 + (i * 0.04), //2.5 + (i * 0.07), // Faster base speed
+        spawnRate: 1200 - (i * 15), //800 - (i * 10), // More gems on screen
       ),
     );
   }
@@ -69,10 +72,10 @@ List<LevelConfig> generateAllLevels() {
         localLevel: i,
         tier: GameTier.tier3,
         objective: ObjectiveType.clearGems,
-        targetValue: 20 + (i * 2), // Scales from 22 to 120 gems
-        timeLimit: 60 + (i > 25 ? 30 : 0), // Adds30s extra for levels 26-50
-        speed: 3.5 + (i * 0.04), // Very fast
-        spawnRate: 600 - (i * 5), // Intense spawning
+        targetValue: 15 + (i * 1.5).toInt(), //20 + (i * 2),
+        timeLimit: 80 + (i * 2), //60 + (i > 25 ? 30 : 0),
+        speed: 2.2 + (i * 0.03), //3.5 + (i * 0.04), // Very fast
+        spawnRate: 1000 - (i * 10), //600 - (i * 5), // Intense spawning
       ),
     );
   }
@@ -98,7 +101,7 @@ class TierTheme {
 final Map<GameTier, TierTheme> tierThemes = {
   GameTier.tier1: TierTheme(
     name: "Crystal Caverns",
-    gradient: [Color(0xFF004d40), Color(0xFF00bcd4)],
+    gradient: [Color(0xff070F2B), Color(0xFF00bcd4)],
     backgroundImage: 'assets/map/jungle_bg.png',
     pathColor: Colors.greenAccent,
   ),
@@ -115,3 +118,33 @@ final Map<GameTier, TierTheme> tierThemes = {
     pathColor: Colors.orangeAccent,
   ),
 };
+
+class TierThemeManager extends ChangeNotifier {
+  TierTheme _current = tierThemes[GameTier.tier1]!;
+  TierTheme get current => _current;
+
+  TierThemeManager() {
+    _listenToProgress();
+  }
+
+  void _listenToProgress() {
+    BubbleGemFirestoreService.unlockedLevelStream().listen((level) {
+      GameTier newTier;
+      if (level > 50) {
+        newTier = GameTier.tier3;
+      } else if (level > 20) {
+        newTier = GameTier.tier2;
+      } else {
+        newTier = GameTier.tier1;
+      }
+
+      if (tierThemes[newTier] != _current) {
+        _current = tierThemes[newTier]!;
+        notifyListeners(); // This tells the whole app to rebuild with new colors!
+      }
+    });
+  }
+}
+
+// Global instance
+final tierThemeManager = TierThemeManager();

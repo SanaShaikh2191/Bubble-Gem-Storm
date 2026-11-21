@@ -1,4 +1,4 @@
-name: bubble_gem_storm
+name: one_second_hero
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -35,18 +35,29 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.5.3
+  lottie: ^3.3.1
   audioplayers: ^6.5.1
   vibration: ^3.1.5
+  confetti: ^0.8.0
+  google_fonts: ^6.3.2
   google_mobile_ads: ^6.0.0
   firebase_core: ^4.4.0
   cloud_firestore: ^6.1.2
   firebase_auth: ^6.1.4
   google_sign_in: ^6.2.1
+  change_app_package_name: ^1.5.0
   go_router: ^13.0.0
   device_preview: ^1.3.1
   firebase_analytics: ^12.1.1
   firebase_crashlytics: ^5.0.7
+  flame: ^1.35.1
+  flame_audio: ^2.11.14
+#  particles_fly: ^0.0.9
+  fl_chart: ^0.70.0
+  flutter_animate: ^4.5.0
   rive: ^0.13.0
+
+  
 
 dev_dependencies:
   flutter_test:
@@ -78,27 +89,38 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/minigame3/bubble_gem_storm/sound/
-     - assets/minigame3/bubble_gem_storm/sound/pop.wav
-     - assets/minigame3/bubble_gem_storm/sound/bomb.wav
-     - assets/minigame3/bubble_gem_storm/sound/shatter.wav
-     - assets/minigame3/bubble_gem_storm/sound/crush.wav
-     - assets/minigame3/bubble_gem_storm/sound/jingle.wav
-     - assets/minigame3/bubble_gem_storm/sound/power.wav
-     - assets/minigame3/bubble_gem_storm/sound/golden.wav
-     - assets/minigame3/bubble_gem_storm/icons/
-     - assets/minigame3/bubble_gem_storm/sound/theme.wav
-     - assets/minigame3/bubble_gem_storm/sound/gameTheme.m4a
-     - assets/minigame3/bubble_gem_storm/sound/tierComplete.mp3
-     - assets/minigame3/bubble_gem_storm/sound/danger.mp3
-     - assets/minigame3/bubble_gem_storm/sound/gravity.flac
-     - assets/minigame3/bubble_gem_storm/sound/poison.wav
-     - assets/minigame3/bubble_gem_storm/sound/dizzy.wav
-     - assets/minigame3/bubble_gem_storm/sound/win.wav
-     - assets/minigame3/bubble_gem_storm/sound/lose.ogg
-     - assets/minigame3/bubble_gem_storm/animations/reward.riv
-     - assets/minigame3/bubble_gem_storm/animations/gift.riv
-     - assets/minigame3/bubble_gem_storm/animations/chest.riv
+    - assets/images/
+    - assets/minigame3/bubble_gem_storm/sound/
+    - assets/minigame3/bubble_gem_storm/sound/pop.wav
+    - assets/minigame3/bubble_gem_storm/sound/bomb.wav
+    - assets/minigame3/bubble_gem_storm/sound/shatter.wav
+    - assets/minigame3/bubble_gem_storm/sound/crush.wav
+    - assets/minigame3/bubble_gem_storm/sound/jingle.wav
+    - assets/minigame3/bubble_gem_storm/sound/power.wav
+    - assets/minigame3/bubble_gem_storm/sound/golden.wav
+    - assets/minigame3/bubble_gem_storm/icons/
+    - assets/minigame3/bubble_gem_storm/sound/theme.wav
+    - assets/minigame3/bubble_gem_storm/sound/gameTheme.m4a
+    - assets/minigame3/bubble_gem_storm/sound/tierComplete.mp3
+    - assets/minigame3/bubble_gem_storm/sound/danger.mp3
+    - assets/minigame3/bubble_gem_storm/sound/gravity.flac
+    - assets/minigame3/bubble_gem_storm/sound/poison.wav
+    - assets/minigame3/bubble_gem_storm/sound/dizzy.wav
+    - assets/minigame3/bubble_gem_storm/sound/win.wav
+    - assets/minigame3/bubble_gem_storm/sound/lose.ogg
+    - assets/minigame3/bubble_gem_storm/animations/reward.riv
+    - assets/minigame3/bubble_gem_storm/animations/gift.riv
+    - assets/minigame3/bubble_gem_storm/animations/chest.riv
+    - assets/minigame3/bubble_gem_storm/animations/Fire animation.json
+    - assets/minigame3/bubble_gem_storm/animations/maps.json
+    - assets/minigame3/bubble_gem_storm/animations/streak.json
+    - assets/minigame3/bubble_gem_storm/animations/Gift Rewards.json
+    - assets/minigame3/bubble_gem_storm/animations/Bubbles Floating.json
+
+
+
+    
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -112,10 +134,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Baloo2
-       fonts:
-         # - asset: assets/minigame3/bubble_gem_storm/fonts/Baloo2-Regular.ttf
-         - asset: assets/minigame3/bubble_gem_storm/fonts/Baloo2-Bold.ttf
+    # - family: Orbitron
+    #   fonts:
+    #     - asset: assets/minigame2/circle_rush/fonts/Orbitron-Regular.ttf
+
+    - family: Baloo2
+      fonts:
+        # - asset: assets/minigame3/bubble_gem_storm/fonts/Baloo2-Regular.ttf
+        - asset: assets/minigame3/bubble_gem_storm/fonts/Baloo2-Bold.ttf
+
+    # - family: Righteous
+    #   fonts:
+    #     - asset: assets/minigame/one_second_hero/fonts/Righteous-Regular.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

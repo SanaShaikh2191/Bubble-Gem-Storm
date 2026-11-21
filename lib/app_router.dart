@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -110,8 +112,9 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/bubble-gem-home',
 
-      builder: (_, _) =>
-          const BubbleGemHomeScreen(key: ValueKey('bubble-gem-home')),
+      builder: (_, _) => const BubbleGemHomeScreen(
+        // key: ValueKey('bubble-gem-home')
+      ),
     ),
 
     GoRoute(
@@ -119,7 +122,12 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         final level =
             int.tryParse(state.uri.queryParameters['level'] ?? '1') ?? 1;
-        return GemGameScreen(level: level); // Pass it to the widget
+        final bool forceTutorial =
+            state.uri.queryParameters['showTutorial'] == 'true';
+        return GemGameScreen(
+          level: level,
+          forceTutorial: forceTutorial,
+        ); // Pass it to the widget
       },
     ),
     GoRoute(
@@ -160,3 +168,20 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
 );
+
+class GoRouterRefreshStream extends ChangeNotifier {
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
+    _subscription = stream.asBroadcastStream().listen(
+      (dynamic _) => notifyListeners(),
+    );
+  }
+
+  late final StreamSubscription<dynamic> _subscription;
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+}
